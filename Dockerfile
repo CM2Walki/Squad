@@ -1,6 +1,5 @@
 ############################################################
-# Dockerfile to build a Sqiad Gameserver
-# Based on Debian Stretch
+# Dockerfile that builds a Squad Gameserver
 ############################################################
 FROM debian:stretch
 MAINTAINER Walentin 'Walki' Lamonos <walentinlamonos@gmail.com>
@@ -15,7 +14,7 @@ RUN apt-get update && apt-get install -y \
         apt-get -y upgrade && \
         useradd -m steam
 
-# Switch to user holdfast for rest of dockerfile
+# Switch to user steam;
 USER steam
 
 # Create Directory for SteamCMD
@@ -43,7 +42,7 @@ USER steam
 
 ENV PORT=7787 QUERYPORT=27165 FIXEDMAXPLAYERS=80 RANDOM=NONE
 
-# Set Entrypoint
+# Set Entrypoint; Technically 2 steps: 1. Update server, 2. Start server
 ENTRYPOINT ./home/steam/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/steam/squad-dedicated +app_update 403240 +quit && \
         ./home/steam/squad-dedicated/SquadServer.sh Port=$PORT QueryPort=$QUERYPORT FIXEDMAXPLAYERS=$FIXEDMAXPLAYERS RANDOM=$RANDOM
 
