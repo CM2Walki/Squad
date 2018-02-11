@@ -43,8 +43,6 @@ USER steam
 
 ENV PORT=7787 QUERYPORT=27165 FIXEDMAXPLAYERS=80 RANDOM=NONE
 
-CMD
-
 # Set Entrypoint
 ENTRYPOINT ./home/steam/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/steam/squad-dedicated +app_update 403240 +quit && \
         ./home/steam/squad-dedicated/SquadServer.sh Port=$PORT QueryPort=$QUERYPORT FIXEDMAXPLAYERS=$FIXEDMAXPLAYERS RANDOM=$RANDOM
