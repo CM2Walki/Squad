@@ -46,4 +46,4 @@ ENTRYPOINT ./home/steam/steamcmd/steamcmd.sh +login anonymous +force_install_dir
         ./home/steam/squad-dedicated/SquadServer.sh Port=$PORT QueryPort=$QUERYPORT FIXEDMAXPLAYERS=$FIXEDMAXPLAYERS RANDOM=$RANDOM
 
 # Expose ports
-EXPOSE 7787 27165
+EXPOSE 7787 27165 21114
