@@ -8,7 +8,6 @@ MAINTAINER Walentin 'Walki' Lamonos <walentinlamonos@gmail.com>
 # Create user for the server
 # This also creates the home directory we later need
 RUN apt-get update && apt-get install -y \
-        screen \
         lib32gcc1 \
         curl && \
         apt-get -y upgrade && \
