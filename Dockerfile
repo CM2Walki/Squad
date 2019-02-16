@@ -5,7 +5,9 @@ FROM cm2network/steamcmd
 LABEL maintainer="walentinlamonos@gmail.com"
 
 # Run Steamcmd and install Squad
-RUN ./home/steam/steamcmd/steamcmd.sh +login anonymous \
+RUN set -x \
+        ./home/steam/steamcmd/steamcmd.sh \
+        +login anonymous \
         +force_install_dir /home/steam/squad-dedicated \
         +app_update 403240 validate \
         +quit
