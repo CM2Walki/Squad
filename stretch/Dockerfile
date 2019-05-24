@@ -30,7 +30,7 @@ VOLUME $STEAMAPPDIR
 # 1. Update server
 # 2. Start server
 ENTRYPOINT ${STEAMCMDDIR}/steamcmd.sh \
-                +login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} +quit 
+                +login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} +quit \
                 && ${STEAMAPPDIR}/SquadGameServer.sh \
                         Port=$PORT QueryPort=$QUERYPORT RCONPORT=$RCONPORT FIXEDMAXPLAYERS=$FIXEDMAXPLAYERS RANDOM=$RANDOM
 
