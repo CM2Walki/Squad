@@ -10,17 +10,17 @@ ENV STEAMAPPDIR /home/steam/squad-dedicated
 
 # Run Steamcmd and install Squad
 RUN set -x \
-        && ${STEAMCMDDIR}/steamcmd.sh \
-                +login anonymous \
-                +force_install_dir ${STEAMAPPDIR} \
-                +app_update ${STEAMAPPID} validate \
-                +quit
+	&& ${STEAMCMDDIR}/steamcmd.sh \
+		+login anonymous \
+		+force_install_dir ${STEAMAPPDIR} \
+		+app_update ${STEAMAPPID} validate \
+		+quit
 
 ENV PORT=7787 \
-        QUERYPORT=27165 \
-        RCONPORT=21114 \
-        FIXEDMAXPLAYERS=80 \
-        RANDOM=NONE
+	QUERYPORT=27165 \
+	RCONPORT=21114 \
+	FIXEDMAXPLAYERS=80 \
+	RANDOM=NONE
 
 WORKDIR $STEAMAPPDIR
 
@@ -30,9 +30,9 @@ VOLUME $STEAMAPPDIR
 # 1. Update server
 # 2. Start server
 ENTRYPOINT ${STEAMCMDDIR}/steamcmd.sh \
-                +login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} +quit \
-                && ${STEAMAPPDIR}/SquadGameServer.sh \
-                        Port=$PORT QueryPort=$QUERYPORT RCONPORT=$RCONPORT FIXEDMAXPLAYERS=$FIXEDMAXPLAYERS RANDOM=$RANDOM
+		+login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} +quit \
+		&& ${STEAMAPPDIR}/SquadGameServer.sh \
+			Port=$PORT QueryPort=$QUERYPORT RCONPORT=$RCONPORT FIXEDMAXPLAYERS=$FIXEDMAXPLAYERS RANDOM=$RANDOM
 
 # Expose ports
 EXPOSE 7787 27165 21114
