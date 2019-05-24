@@ -2,23 +2,37 @@
 # Dockerfile that builds a Squad Gameserver
 ############################################################
 FROM cm2network/steamcmd
+
 LABEL maintainer="walentinlamonos@gmail.com"
+
+ENV STEAMAPPID 403240
+ENV STEAMAPPDIR /home/steam/squad-dedicated
 
 # Run Steamcmd and install Squad
 RUN set -x \
-        && ./home/steam/steamcmd/steamcmd.sh \
-        +login anonymous \
-        +force_install_dir /home/steam/squad-dedicated \
-        +app_update 403240 validate \
-        +quit
+        && ${STEAMCMDDIR}/steamcmd.sh \
+                +login anonymous \
+                +force_install_dir ${STEAMAPPDIR} \
+                +app_update ${STEAMAPPID} validate \
+                +quit
 
-ENV PORT=7787 QUERYPORT=27165 RCONPORT=21114 FIXEDMAXPLAYERS=80 RANDOM=NONE
+ENV PORT=7787 \
+        QUERYPORT=27165 \
+        RCONPORT=21114 \
+        FIXEDMAXPLAYERS=80 \
+        RANDOM=NONE
 
-VOLUME /home/steam/squad-dedicated
+WORKDIR $STEAMAPPDIR
 
-# Set Entrypoint; Technically 2 steps: 1. Update server, 2. Start server
-ENTRYPOINT ./home/steam/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/steam/squad-dedicated +app_update 403240 +quit && \
-        ./home/steam/squad-dedicated/SquadGameServer.sh Port=$PORT QueryPort=$QUERYPORT RCONPORT=$RCONPORT FIXEDMAXPLAYERS=$FIXEDMAXPLAYERS RANDOM=$RANDOM
+VOLUME $STEAMAPPDIR
+
+# Set Entrypoint
+# 1. Update server
+# 2. Start server
+ENTRYPOINT ${STEAMCMDDIR}/steamcmd.sh \
+                +login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} +quit 
+                && ${STEAMAPPDIR}/SquadGameServer.sh \
+                        Port=$PORT QueryPort=$QUERYPORT RCONPORT=$RCONPORT FIXEDMAXPLAYERS=$FIXEDMAXPLAYERS RANDOM=$RANDOM
 
 # Expose ports
 EXPOSE 7787 27165 21114
