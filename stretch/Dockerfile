@@ -1,7 +1,7 @@
 ############################################################
 # Dockerfile that builds a Squad Gameserver
 ############################################################
-FROM cm2network/steamcmd
+FROM cm2network/steamcmd:steam
 
 LABEL maintainer="walentinlamonos@gmail.com"
 
@@ -10,7 +10,7 @@ ENV STEAMAPPDIR /home/steam/squad-dedicated
 
 # Run Steamcmd and install Squad
 RUN set -x \
-	&& ${STEAMCMDDIR}/steamcmd.sh \
+	&& "${STEAMCMDDIR}/steamcmd.sh" \
 		+login anonymous \
 		+force_install_dir ${STEAMAPPDIR} \
 		+app_update ${STEAMAPPID} validate \
