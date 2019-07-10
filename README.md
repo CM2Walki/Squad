@@ -38,6 +38,6 @@ RANDOM=NONE
 ```
 
 ## Config
-The config files can be found under */home/steam/squad-dedicated/Squad/ServerConfig/*
+The config files can be found under */home/steam/squad-dedicated/SquadGame/ServerConfig/*
 
 If you want to learn more about configuring a Squad server check this [documentation](https://squad.gamepedia.com/Server_Configuration).
