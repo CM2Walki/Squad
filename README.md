@@ -21,7 +21,7 @@ $ docker run -d --net=host --name=squad-dedicated cm2network/squad
 Running as a normal docker container:<br/>
 
 ```console
-$ docker run -d -p 7787:7787\udp -p 7788:7788\udp -p 27165:27165\udp -p 27166:27166\tcp -p 27166:27166\udp -p 21114:21114\tcp -p 21114:21114\udp -e PORT=7787 -e QUERYPORT=27165 -e RCONPORT=21115 --name=squad-server 65f80eb97478
+$ docker run -d -p 7787:7787/udp -p 7788:7788/udp -p 27165:27165/udp -p 27166:27166/tcp -p 27166:27166/udp -p 21114:21114/tcp -p 21114:21114/udp -e PORT=7787 -e QUERYPORT=27165 -e RCONPORT=21115 --name=squad-server cm2network/squad
 ```
 
 Running multiple instances (iterate PORT, QUERYPORT and RCONPORT):<br/>
