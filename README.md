@@ -1,6 +1,6 @@
 [![](https://img.shields.io/codacy/grade/482dfa40623d4507b592c8b22d2b7ca0.svg)](https://hub.docker.com/r/cm2network/squad/) [![Docker Build Status](https://img.shields.io/docker/build/cm2network/squad.svg)](https://hub.docker.com/r/cm2network/squad/) [![Docker Stars](https://img.shields.io/docker/stars/cm2network/squad.svg)](https://hub.docker.com/r/cm2network/squad/) [![Docker Pulls](https://img.shields.io/docker/pulls/cm2network/squad.svg)](https://hub.docker.com/r/cm2network/squad/) [![](https://images.microbadger.com/badges/image/cm2network/squad.svg)](https://microbadger.com/images/cm2network/squad)
 # Supported tags and respective `Dockerfile` links
--	[`latest` (*stretch/Dockerfile*)](https://github.com/CM2Walki/Squad/blob/master/stretch/Dockerfile)
+-	[`latest` (*buster/Dockerfile*)](https://github.com/CM2Walki/Squad/blob/master/buster/Dockerfile)
 
 # What is Squad?
 Squad is a tactical FPS that provides authentic combat experiences through teamwork, communication, and gameplay. It seeks to bridge the large gap between arcade shooter and military simulation. Large scale, combined arms combat, base building, and a great integrated VoIP system. <br/>
