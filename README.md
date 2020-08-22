@@ -15,18 +15,12 @@ This Docker image contains the dedicated server of the game. <br/>
 ## Hosting a simple game server
 Running on the *host* interface (recommended):<br/>
 ```console
-$ docker run -d --net=host --name=squad-dedicated cm2network/squad
-```
-
-Running as a normal docker container:<br/>
-
-```console
-$ docker run -d -p 7787:7787/udp -p 27165:27165/tcp -p 27165:27165/udp -p 21114:21114/tcp -p 21114:21114/udp -e PORT=7787 -e QUERYPORT=27165 -e RCONPORT=21115 --name=squad-server cm2network/squad
+$ docker run -d --net=host -v /home/steam/squad-dedicated/ --name=squad-dedicated cm2network/squad
 ```
 
 Running multiple instances (iterate PORT, QUERYPORT and RCONPORT):<br/>
 ```console
-$ docker run -d --net=host -e PORT=7788 -e QUERYPORT=27166 -e RCONPORT=21115 --name=squad-dedicated2 cm2network/squad
+$ docker run -d --net=host -v /home/steam/squad-dedicated/ -e PORT=7788 -e QUERYPORT=27166 -e RCONPORT=21115 --name=squad-dedicated2 cm2network/squad
 ```
 
 **It's also recommended using "--cpuset-cpus=" to limit the game server to a specific core & thread.**<br/>
@@ -44,6 +38,10 @@ RANDOM=NONE
 ```
 
 ## Config
-The config files can be found under */home/steam/squad-dedicated/SquadGame/ServerConfig/*
+The config files can be edited using this command:
+
+```console
+$ docker exec -it squad-dedicated nano /home/steam/squad-dedicated/SquadGame/ServerConfig/Server.cfg
+```
 
 If you want to learn more about configuring a Squad server check this [documentation](https://squad.gamepedia.com/Server_Configuration).

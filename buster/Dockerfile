@@ -1,20 +1,21 @@
 ############################################################
 # Dockerfile that builds a Squad Gameserver
 ############################################################
-FROM cm2network/steamcmd:steam
+FROM cm2network/steamcmd:root
 
 LABEL maintainer="walentinlamonos@gmail.com"
 
 ENV STEAMAPPID 403240
-ENV STEAMAPPDIR /home/steam/squad-dedicated
+ENV STEAMAPP squad
+ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
+ENV DLURL https://raw.githubusercontent.com/CM2Walki/Squad
 
-# Run Steamcmd and install Squad
 RUN set -x \
-	&& "${STEAMCMDDIR}/steamcmd.sh" \
-		+login anonymous \
-		+force_install_dir ${STEAMAPPDIR} \
-		+app_update ${STEAMAPPID} validate \
-		+quit
+	&& apt-get update \
+		wget=1.20.1-1.1 \
+	&& wget "${DLURL}/master/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
+	&& chmod 755 "${HOMEDIR}/entry.sh" \
+	&& rm -rf /var/lib/apt/lists/*
 
 ENV PORT=7787 \
 	QUERYPORT=27165 \
@@ -22,17 +23,9 @@ ENV PORT=7787 \
 	FIXEDMAXPLAYERS=80 \
 	RANDOM=NONE
 
-WORKDIR $STEAMAPPDIR
+WORKDIR ${HOMEDIR}
 
-VOLUME $STEAMAPPDIR
-
-# Set Entrypoint
-# 1. Update server
-# 2. Start server
-ENTRYPOINT ${STEAMCMDDIR}/steamcmd.sh \
-		+login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} +quit \
-		&& ${STEAMAPPDIR}/SquadGameServer.sh \
-			Port=$PORT QueryPort=$QUERYPORT RCONPORT=$RCONPORT FIXEDMAXPLAYERS=$FIXEDMAXPLAYERS RANDOM=$RANDOM
+CMD ["bash", "entry.sh"]
 
 # Expose ports
 EXPOSE 7787/udp \
