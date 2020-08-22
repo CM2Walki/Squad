@@ -16,6 +16,7 @@ RUN set -x \
 		wget=1.20.1-1.1 \
 	&& wget "${DLURL}/master/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
 	&& chmod 755 "${HOMEDIR}/entry.sh" \
+	&& chown "${USER}:${USER}" "${HOMEDIR}/entry.sh" \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV PORT=7787 \
