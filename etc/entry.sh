@@ -8,8 +8,8 @@ bash "${STEAMCMDDIR}/steamcmd.sh" +login anonymous \
 sed -i -e 's/Port=21114/'"Port=${RCONPORT}"'/g' "${STEAMAPPDIR}/SquadGame/ServerConfig/Rcon.cfg"
 
 bash "${STEAMAPPDIR}/SquadGameServer.sh" \
-			Port="${PORT}" \ 
-			QueryPort="${QUERYPORT}" \ 
+			Port="${PORT}" \
+			QueryPort="${QUERYPORT}" \
 			RCONPORT="${RCONPORT}" \
-			FIXEDMAXPLAYERS="${FIXEDMAXPLAYERS}" \ 
+			FIXEDMAXPLAYERS="${FIXEDMAXPLAYERS}" \
 			RANDOM="${RANDOM}"
