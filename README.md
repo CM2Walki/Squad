@@ -53,3 +53,6 @@ $ docker exec -it squad-dedicated nano /home/steam/squad-dedicated/SquadGame/Ser
 ```
 
 If you want to learn more about configuring a Squad server check this [documentation](https://squad.gamepedia.com/Server_Configuration).
+
+# Contributors
+[![Contributors Display](https://badges.pufler.dev/contributors/CM2Walki/Squad?size=50&padding=5&bots=false)](https://github.com/CM2Walki/Squad/graphs/contributors)
