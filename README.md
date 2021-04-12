@@ -33,6 +33,25 @@ $ docker run -d --net=host -v /home/steam/squad-dedicated/ -e PORT=7788 -e QUERY
 **It's also recommended using "--cpuset-cpus=" to limit the game server to a specific core & thread.**<br/>
 **The container will automatically update the game on startup, so if there is a game update just restart the container.**
 
+### docker-compose.yml example
+```dockerfile
+version: '3.9'
+
+services:
+  squad:
+    image: cm2network/squad
+    container_name: squad
+    restart: unless-stopped
+    network_mode: "host"
+    volumes:
+      - /storage/squad/:/home/steam/squad-dedicated/
+    environment:
+      - PORT=7787
+      - QUERYPORT=27165
+      - RCONPORT=21114
+      - FIXEDMAXPLAYERS=100
+```
+
 # Configuration
 ## Environment Variables
 Feel free to overwrite these environment variables, using -e (--env):
