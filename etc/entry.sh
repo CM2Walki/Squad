@@ -1,6 +1,6 @@
 #!/bin/bash
 bash "${STEAMCMDDIR}/steamcmd.sh" +login anonymous \
-				+force_install_dir "${STEAMAPPDIR}" \
+				+force_install_dir "/home/steam/squad-dedicated/" \
 				+app_update "${STEAMAPPID}" \
 				+quit
 
