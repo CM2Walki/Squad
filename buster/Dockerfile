@@ -7,8 +7,14 @@ LABEL maintainer="walentinlamonos@gmail.com"
 
 ENV STEAMAPPID 403240
 ENV STEAMAPP squad
-ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated/steamapps"
-ENV DLURL https://raw.githubusercontent.com/Immervoll/Squad
+ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
+ENV DLURL https://raw.githubusercontent.com/CM2Walki/Squad
+
+ENV STEAM_BETA_APP 774961
+ENV STEAM_BETA_PW ""
+ENV STEAM_BETA_BRANCH ""
+
+
 
 RUN set -x \
 	&& apt-get update \
