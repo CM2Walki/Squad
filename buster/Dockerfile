@@ -10,6 +10,12 @@ ENV STEAMAPP squad
 ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
 ENV DLURL https://raw.githubusercontent.com/CM2Walki/Squad
 
+ENV STEAM_BETA_APP 774961
+ENV STEAM_BETA_PW ""
+ENV STEAM_BETA_BRANCH ""
+
+
+
 RUN set -x \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
