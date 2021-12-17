@@ -1,11 +1,11 @@
 #!/bin/bash
-if ${STEAM_BETA_BRANCH} != ""
+if [ -z "$STEAM_BETA_BRANCH" ]
 then
 	bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${STEAMAPPDIR}" \
 					+login anonymous \
 					+app_update "${STEAM_BETA_APP}" \
-					+beta "${STEAM_BETA_BRANCH}" \
-					+betapassword "${STEAM_BETA_PASSWORD}" \
+					-beta "${STEAM_BETA_BRANCH}" \
+					-betapassword "${STEAM_BETA_PASSWORD}" \
 					+quit
 else
 	bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${STEAMAPPDIR}" \
