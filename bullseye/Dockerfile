@@ -14,16 +14,17 @@ ENV STEAM_BETA_APP 774961
 ENV STEAM_BETA_PASSWORD ""
 ENV STEAM_BETA_BRANCH ""
 
-
-
 RUN set -x \
+	# Install, update & upgrade packages
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
-		wget=1.20.1-1.1 \
+		wget=1.21-1+deb11u1 \
+	# Add entry script
 	&& wget "${DLURL}/master/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
 	&& mkdir -p "${STEAMAPPDIR}" \
 	&& chmod 755 "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}" \
 	&& chown "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}" \
+	# Clean up
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV PORT=7787 \
@@ -33,6 +34,7 @@ ENV PORT=7787 \
 	FIXEDMAXTICKRATE=50 \
 	RANDOM=NONE
 
+# Switch to user
 USER ${USER}
 
 WORKDIR ${HOMEDIR}
