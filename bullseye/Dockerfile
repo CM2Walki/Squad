@@ -17,7 +17,7 @@ ENV WORKSHOPID 393380
 ENV MODPATH "${STEAMAPPDIR}/SquadGame/Plugins/Mods"
 ENV MODS "()"
 
-ADD etc/entry.sh ${HOMEDIR}
+COPY etc/entry.sh ${HOMEDIR}
 
 RUN set -x \
 	&& mkdir -p "${STEAMAPPDIR}" \
