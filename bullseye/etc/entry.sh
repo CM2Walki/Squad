@@ -35,7 +35,6 @@ then
 		"${STEAMCMDDIR}/steamcmd.sh" +force_install_dir $STEAMAPPDIR +login anonymous +workshop_download_item $WORKSHOPID $MODID +quit
 
 		echo -e "\n> Link mod content '${MODID}'"
-		# cp -R "${STEAMAPPDIR}/steamapps/workshop/content/${WORKSHOPID}/${MODID}" "${MODPATH}/${MODID}" 2>/dev/null
 		ln -s "${STEAMAPPDIR}/steamapps/workshop/content/${WORKSHOPID}/${MODID}" "${MODPATH}/${MODID}"
 	done
 fi
