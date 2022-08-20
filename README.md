@@ -62,6 +62,7 @@ RCONPORT=21114
 FIXEDMAXPLAYERS=80
 FIXEDMAXTICKRATE=50
 RANDOM=NONE
+MODS="()"
 ```
 
 ## Config
@@ -72,6 +73,14 @@ $ docker exec -it squad-dedicated nano /home/steam/squad-dedicated/SquadGame/Ser
 ```
 
 If you want to learn more about configuring a Squad server check this [documentation](https://squad.gamepedia.com/Server_Configuration).
+
+## Mods
+
+Add each id to the MODS environment variable, for example `MODS="(13371337 12341234 1111111)"`
+
+> MODS must be a bash array `(mod1id mod2id mod3id)` where each mod id is separated by a space and inclosed in brackets
+
+You can get the mod id from the workshop url or by installing it locally and lookup the numeric folder name at `<root_steam_folder>/steamapps/workshop/content/393380`.
 
 # Contributors
 [![Contributors Display](https://badges.pufler.dev/contributors/CM2Walki/Squad?size=50&padding=5&bots=false)](https://github.com/CM2Walki/Squad/graphs/contributors)
